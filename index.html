@@ -1,0 +1,162 @@
+<html>
+   <head>
+       <meta charset="utf-8">
+       <title>plantilla</title>
+       <link rel="stylesheet" href="css/bootstrap.min.css">
+       <link rel="stylesheet" href="css/index.css">
+       <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACLMwjO6OQvM0G6x97_yy2rajDIdlqiYA&callback=initMap"></script>
+   </head>
+   <header>
+      <div class="container-vertical">
+          <div class="center-vertical">
+              <div class="container-title">
+                   <span><b>Contacto</b></span>
+               </div>
+          </div>
+      </div>
+   </header>
+    <body>
+       <div class="container">
+           <div class="container-fluid">
+           <div class="row">
+               <div id=""class="col-lg-12 container-first">
+                 <form action="conect.php" role="form" method="post">
+                      <div class="row">
+                           <div class="col-lg-12">
+                               <div class="container-title" style="display: none">
+                                   <span><b>Contacto</b></span>
+                               </div>
+                           </div>
+                           <div class="col-lg-6">
+                         <div class="row">
+                             <div class="col-lg-6">
+                               <label for=""><b>ID*</b></label>
+                               <input id="id" type="text" name="id" required>
+                             </div>
+                             <div class="col-lg-6">
+                               <label for=""><b>Nombre</b></label>
+                               <input id="name"type="text" name="nombre" required>
+                            </div>
+                            <div class="col-lg-12" style="margin-bottom: 20px;margin-top: 20px">
+                               <div>
+                                   <span><b>Contacto</b></span>
+                               </div>
+                           </div>
+                           <div class="col-lg-6">
+                               <label for=""><b>Sitio web</b></label>
+                               <input id="site"type="text" name="sitio" required>
+                           </div>
+                           <div class="col-lg-6">
+                               <label for=""><b>Email</b></label>
+                               <input id="email" type="email" name="email" required>
+                           </div>
+                           <div class="col-lg-6">
+                               <label for=""><b>Telefono</b></label>
+                               <input id="telephone" type="number" name="telefono" required>
+                           </div>
+                           <div class="col-lg-12" style="margin-bottom: 20px; margin-top: 20px">
+                               <div>
+                                   <span><b>Direccion</b></span>
+                               </div>
+                           </div>
+                            <div class="col-lg-12">
+                               <label for=""><b>Calle</b></label>
+                               <input id="street" type="text" name="calle"required>
+                           </div>
+                           <div class="col-lg-6">
+                               <label for=""><b>Ciudad</b></label>
+                               <input id="city" type="text" name="ciudad" required>
+                           </div>
+                           <div class="col-lg-6">
+                               <label for=""><b>Estado</b></label>
+                               <input id="state" type="text" name="estado" required>
+                           </div>
+                           <div class="col-lg-6">
+                               <label for=""><b>latitud</b></label>
+                               <input id="lat" type="number" name="ub" required>
+                           </div>
+                           <div class="col-lg-6">
+                               <label for=""><b>longitud</b></label>
+                               <input id="lng" type="number" name="ub" required>
+                           </div>
+                           <div class="col-lg-6">
+                               <label for=""><b>Raiting</b></label>
+                               <input id="rai" type="number" name="ra" required min="1" max="4">
+                           </div>
+                           <div class="col-lg-6">
+                              <div class="container-button-send">
+                                <button class="btn btn-primary btn-send" value="enviar">Enviar</button>
+                              </div>
+                           </div>
+                         </div>
+                       </div>
+                           <div class="col-lg-6">
+                              <div class="container-map">
+                                  <div id="map" class="gmaps mc"></div>
+                              </div>
+                           </div>
+                       </div>
+                   </form>
+               </div>
+           </div>
+        </div>
+       </div>
+        <script>
+            var map;
+            function initMap(){
+                var latlng = {lat: 19.4326077, lng: -99.13320799999997};
+                map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: latlng
+                });
+                
+                var marker = new google.maps.Marker({
+                    position: latlng,
+                    map: map,
+                    title: 'Click to zoom'
+                });
+                
+                map.addListener('center_changed', function() {
+    // 3 seconds after the center of the map has changed, pan back to the
+    // marker.
+                window.setTimeout(function() {
+                marker.setPosition(map.getCenter());
+                }, 3000);
+                });
+            }
+     
+        /*var infoWindow = new google.maps.InfoWindow({map: latlng});
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude 
+          };
+			  
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            document.getElementById("lat").value = pos['lat'];
+            document.getElementById("lng").value = pos['lng'];
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+      } */
+
+    </script>
+    </body>
+    <footer>
+    </footer>
+</html>
